@@ -18,14 +18,6 @@ struct node{
 	struct node *right;
 };
 
-struct node *newNode(int key)
-{
-	struct node *temp = (struct node *)malloc(sizeof(struct node));
-	temp->data = key;
-	temp->left = NULL;
-	temp->right = NULL;
-	return temp;
-}
 
 int main(){
 

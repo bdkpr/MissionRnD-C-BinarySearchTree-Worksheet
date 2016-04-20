@@ -23,13 +23,54 @@ struct node{
 };
 
 
-void inorder(struct node *root, int *arr){
-	
+void in_ord(struct node *root, int *arr, int *ind){
+	if (root == NULL){
+		return;
+	}
+	in_ord(root->left, arr, ind);
+	arr[*ind] = root->data;
+	(*ind)++;
+	in_ord(root->right, arr, ind);
 }
-void preorder(struct node *root, int *arr){
-	
+void pre_ord(struct node *root, int *arr, int *ind){
+	if (root == NULL){
+		return;
+	}
+	arr[*ind] = root->data;
+	(*ind)++;
+	pre_ord(root->left, arr, ind);
+	pre_ord(root->right, arr, ind);
 }
-void postorder(struct node *root, int *arr){
-	
+void post_ord(struct node *root, int *arr, int *ind){
+	if (root == NULL){
+		return;
+	}
+	post_ord(root->left, arr, ind);
+	post_ord(root->right, arr, ind);
+	arr[*ind] = root->data;
+	(*ind)++;
 }
 
+void inorder(struct node *root, int *arr){
+	if (root == NULL||arr==NULL){
+		return;
+	}
+	int k = 0;
+	in_ord(root, arr, &k);
+}
+
+void preorder(struct node *root, int *arr){
+	if (root == NULL || arr == NULL){
+		return;
+	}
+	int k = 0;
+	pre_ord(root, arr, &k);
+}
+
+void postorder(struct node *root, int *arr){
+	if (root == NULL || arr == NULL){
+		return;
+	}
+	int k = 0;
+	post_ord(root, arr, &k);
+}
